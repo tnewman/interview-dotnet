@@ -1,3 +1,7 @@
+# Tom's Notes
+## Design Tradeoffs
+- In a project with very complex business rules or multiple frontends (API and server-side rendered pages), I would separate the business logic from the controller. Separating the code out later would not be difficult.
+
 # Overview
 This exercise is intentionally left open ended.  Within you will find a skeleton code base and a json file intended to simulate a database.
 
@@ -16,3 +20,4 @@ This exercise is intentionally left open ended.  Within you will find a skeleton
 
 # Expectations
 Implement the above listed requirements in a manner you see fitting.  Demonstrate design and implementation aspects you feel are important in a software project.
+
