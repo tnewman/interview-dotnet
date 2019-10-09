@@ -19,9 +19,27 @@ namespace GroceryStoreAPI.Product
             this.jsonDatabase = jsonDatabase;
         }
 
+        [HttpGet]
         public IEnumerable<Product> List()
         {
             return this.jsonDatabase.loadJSONData().Products;
+        }
+
+        [HttpGet("{id}")]
+        public ActionResult<Product> Get(int id)
+        {
+            Product product = this.jsonDatabase
+                .loadJSONData()
+                .Products
+                .Where(p => p.Id == id)
+                .FirstOrDefault();
+
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(product);
         }
     }
 }

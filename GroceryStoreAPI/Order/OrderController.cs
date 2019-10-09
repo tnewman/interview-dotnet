@@ -20,9 +20,48 @@ namespace GroceryStoreAPI.Order
         }
 
         [HttpGet]
-        public IEnumerable<Order> List()
+        public ActionResult<IEnumerable<Order>> List()
         {
-            return this.jsonDatabase.loadJSONData().Orders;
+            return Ok(this.jsonDatabase.loadJSONData().Orders);
+        }
+
+        [HttpGet("{id}")]
+        public ActionResult<Order> Get(int id)
+        {
+            Order order = this.jsonDatabase
+                .loadJSONData()
+                .Orders
+                .Where(o => o.Id == id)
+                .FirstOrDefault();
+
+            if (order == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(order);
+        }
+
+        [HttpGet("customer/{customerId}")]
+        public ActionResult<IEnumerable<Order>> GetByCustomer(int customerId)
+        {
+            IEnumerable<Order> orders = this.jsonDatabase
+                .loadJSONData()
+                .Orders
+                .Where(o => o.CustomerId == customerId);
+
+            return Ok(orders);
+        }
+
+        [HttpGet("date/{date}")]
+        public ActionResult<IEnumerable<Order>> GetByDate(DateTime date)
+        {
+            IEnumerable<Order> orders = this.jsonDatabase
+                .loadJSONData()
+                .Orders
+                .Where(o => o.Date == date);
+
+            return Ok(orders);
         }
     }
 }

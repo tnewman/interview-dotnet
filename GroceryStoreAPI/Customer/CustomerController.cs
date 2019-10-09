@@ -20,9 +20,26 @@ namespace GroceryStoreAPI.Customer
         }
 
         [HttpGet]
-        public IEnumerable<Customer> List()
+        public ActionResult<IEnumerable<Customer>> List()
         {
-            return this.jsonDatabase.loadJSONData().Customers;
+            return Ok(this.jsonDatabase.loadJSONData().Customers);
+        }
+
+        [HttpGet("{id}")]
+        public ActionResult<Customer> Get(int id)
+        {
+            Customer customer = this.jsonDatabase
+                .loadJSONData()
+                .Customers
+                .Where(c => c.Id == id)
+                .FirstOrDefault();
+
+            if (customer == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(customer);
         }
     }
 }

@@ -8,13 +8,12 @@ namespace GroceryStoreAPI.Order
 {
     public class Order
     {
-        [JsonProperty("id")]
+        public DateTime Date { get; set; }
+
         public int Id { get; set; }
 
-        [JsonProperty("customerId")]
         public int CustomerId { get; set; }
 
-        [JsonProperty("items")]
         public List<Item> Items { get; set; }
     }
 }
