@@ -7,9 +7,9 @@ namespace GroceryStoreAPI.Product
     [ApiController]
     public class ProductController : ControllerBase
     {
-        private ProductRepository productRepository;
+        private IProductRepository productRepository;
 
-        public ProductController(ProductRepository productRepository)
+        public ProductController(IProductRepository productRepository)
         {
             this.productRepository = productRepository;
         }
@@ -30,7 +30,7 @@ namespace GroceryStoreAPI.Product
                 return NotFound();
             }
 
-            return Ok(product);
+            return product;
         }
 
         [HttpPost]
@@ -38,7 +38,7 @@ namespace GroceryStoreAPI.Product
         {
             Product savedProduct = this.productRepository.Save(product);
 
-            return Ok(savedProduct);
+            return savedProduct;
         }
     }
 }

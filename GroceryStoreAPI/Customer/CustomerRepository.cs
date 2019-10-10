@@ -4,11 +4,20 @@ using System.Linq;
 
 namespace GroceryStoreAPI.Customer
 {
-    public class CustomerRepository
+    public interface ICustomerRepository
     {
-        private JSONDatabase jsonDatabase;
+        IEnumerable<Customer> List();
 
-        public CustomerRepository(JSONDatabase jsonDatabase)
+        Customer Get(int id);
+
+        Customer Save(Customer customer);
+    }
+
+    public class CustomerRepository : ICustomerRepository
+    {
+        private IJSONDatabase jsonDatabase;
+
+        public CustomerRepository(IJSONDatabase jsonDatabase)
         {
             this.jsonDatabase = jsonDatabase;
         }

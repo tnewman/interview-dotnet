@@ -1,4 +1,5 @@
 ﻿using GroceryStoreAPI.Customer;
+using GroceryStoreAPI.JSON;
 using GroceryStoreAPI.Order;
 using GroceryStoreAPI.Product;
 using Microsoft.AspNetCore.Builder;
@@ -22,10 +23,10 @@ namespace GroceryStoreAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            services.AddSingleton<JSON.JSONDatabase>();
-            services.AddSingleton<CustomerRepository>();
-            services.AddSingleton<OrderRepository>();
-            services.AddSingleton<ProductRepository>();
+            services.AddSingleton<IJSONDatabase, JSONDatabase>();
+            services.AddSingleton<ICustomerRepository, CustomerRepository>();
+            services.AddSingleton<IOrderRepository, OrderRepository>();
+            services.AddSingleton<IProductRepository, ProductRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

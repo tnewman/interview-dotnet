@@ -5,11 +5,22 @@ using System.Linq;
 
 namespace GroceryStoreAPI.Order
 {
-    public class OrderRepository
+    public interface IOrderRepository
     {
-        private JSONDatabase jsonDatabase;
+        IEnumerable<Order> List();
 
-        public OrderRepository(JSONDatabase jsonDatabase)
+        Order Get(int id);
+
+        IEnumerable<Order> GetByCustomer(int customerId);
+
+        IEnumerable<Order> GetByDate(DateTime date);
+    }
+
+    public class OrderRepository : IOrderRepository
+    {
+        private IJSONDatabase jsonDatabase;
+
+        public OrderRepository(IJSONDatabase jsonDatabase)
         {
             this.jsonDatabase = jsonDatabase;
         }

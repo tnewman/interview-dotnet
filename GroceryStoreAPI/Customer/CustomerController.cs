@@ -7,9 +7,9 @@ namespace GroceryStoreAPI.Customer
     [ApiController]
     public class CustomerController : ControllerBase
     {
-        CustomerRepository customerRepository;
+        ICustomerRepository customerRepository;
 
-        public CustomerController(CustomerRepository customerRepository)
+        public CustomerController(ICustomerRepository customerRepository)
         {
             this.customerRepository = customerRepository;
         }

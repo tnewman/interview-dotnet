@@ -8,9 +8,9 @@ namespace GroceryStoreAPI.Order
     [ApiController]
     public class OrderController : ControllerBase
     {
-        OrderRepository orderRepository;
+        IOrderRepository orderRepository;
 
-        public OrderController(OrderRepository orderRepository)
+        public OrderController(IOrderRepository orderRepository)
         {
             this.orderRepository = orderRepository;
         }

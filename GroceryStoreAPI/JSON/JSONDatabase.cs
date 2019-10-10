@@ -4,7 +4,14 @@ using System.IO;
 
 namespace GroceryStoreAPI.JSON
 {
-    public class JSONDatabase
+    public interface IJSONDatabase
+    {
+        JSONData loadJSONData();
+
+        JSONData saveJSONData(JSONData jsonData);
+    }
+
+    public class JSONDatabase : IJSONDatabase
     {
         public JSONData loadJSONData()
         {

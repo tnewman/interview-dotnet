@@ -4,9 +4,10 @@ using GroceryStoreAPI.Order;
 using GroceryStoreAPI.Product;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
-namespace GroceryStoreAPITest.JSONDatabaseTest
+namespace GroceryStoreAPITest.JSONTest
 {
     [TestClass]
     public class JSONDatabaseTest
