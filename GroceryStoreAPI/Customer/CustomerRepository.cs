@@ -1,8 +1,6 @@
 ﻿using GroceryStoreAPI.JSON;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace GroceryStoreAPI.Customer
 {
@@ -27,6 +25,27 @@ namespace GroceryStoreAPI.Customer
                 .Customers
                 .Where(c => c.Id == id)
                 .FirstOrDefault();
+        }
+
+        public Customer Save(Customer customer)
+        {
+            JSONData jsonData = this.jsonDatabase.loadJSONData();
+
+            Dictionary<int, Customer> customersById = new Dictionary<int, Customer>();
+
+            foreach(Customer currentCustomer in jsonData.Customers)
+            {
+                customersById[currentCustomer.Id] = currentCustomer;
+            }
+
+            // Upsert the Customer
+            customersById[customer.Id] = customer;
+
+            jsonData.Customers = customersById.Values;
+
+            this.jsonDatabase.saveJSONData(jsonData);
+
+            return customer;
         }
     }
 }

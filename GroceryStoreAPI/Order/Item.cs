@@ -1,17 +1,14 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace GroceryStoreAPI.Order
 {
     public class Item
     {
-        [JsonProperty("productId")]
+        [Required]
         public int ProductId { get; set; }
 
-        [JsonProperty("quantity")]
+        [Required]
         public int Quantity { get; set; }
     }
 }

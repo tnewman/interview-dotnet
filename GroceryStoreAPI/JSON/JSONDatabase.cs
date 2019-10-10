@@ -1,10 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace GroceryStoreAPI.JSON
 {
@@ -18,6 +14,17 @@ namespace GroceryStoreAPI.JSON
                 JObject json = (JObject)JToken.ReadFrom(reader);
                 return json.ToObject<JSONData>();
             }
+        }
+
+        public JSONData saveJSONData(JSONData jsonData)
+        {
+            using (StreamWriter file = File.CreateText(@"database.json"))
+            {
+                JsonSerializer serializer = new JsonSerializer();
+                serializer.Serialize(file, jsonData);
+            }
+
+            return jsonData;
         }
     }
 }

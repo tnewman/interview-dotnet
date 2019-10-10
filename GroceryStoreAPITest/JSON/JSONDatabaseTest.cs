@@ -3,13 +3,16 @@ using GroceryStoreAPI.JSON;
 using GroceryStoreAPI.Order;
 using GroceryStoreAPI.Product;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Collections.Generic;
+using System;
+using System.Linq;
 
 namespace GroceryStoreAPITest.JSONDatabaseTest
 {
     [TestClass]
     public class JSONDatabaseTest
     {
+        // NOTE(tnewman): This is really an integration test
+
         private JSONDatabase jsonDatabase;
 
         [TestInitialize]
@@ -25,17 +28,32 @@ namespace GroceryStoreAPITest.JSONDatabaseTest
 
             Assert.IsNotNull(jsonData);
 
-            Assert.AreEqual(1, jsonData.Customers[0].Id);
-            Equals("Bob", jsonData.Customers[0].Name);
+            Customer customer = jsonData.Customers.First();
+            Assert.AreEqual(1, customer.Id);
+            Equals("Bob", customer.Name);
 
-            Assert.AreEqual(1, jsonData.Orders[0].Id);
-            Assert.AreEqual(1, jsonData.Orders[0].CustomerId);
-            Assert.AreEqual(1, jsonData.Orders[0].Items[0].ProductId);
-            Assert.AreEqual(2, jsonData.Orders[0].Items[0].Quantity);
+            Order order = jsonData.Orders.First();
+            Assert.AreEqual(1, order.Id);
+            Assert.AreEqual(1, order.CustomerId);
+            Assert.AreEqual(1, order.Items.First().ProductId);
+            Assert.AreEqual(2, order.Items.First().Quantity);
 
-            Assert.AreEqual(1, jsonData.Products[0].Id);
-            Equals("apple", jsonData.Products[0].Description);
-            Assert.AreEqual(0.50m, jsonData.Products[0].Price);
+            Product product = jsonData.Products.First();
+            Assert.AreEqual(1, product.Id);
+            Equals("apple", product.Description);
+            Assert.AreEqual(0.50m, product.Price);
+        }
+
+        [TestMethod]
+        public void TestSavesJSONData()
+        {
+            JSONData currentJSONData = this.jsonDatabase.loadJSONData();
+            currentJSONData.Orders.First().Date = DateTime.Now;
+
+            this.jsonDatabase.saveJSONData(currentJSONData);
+            JSONData newJSONData = this.jsonDatabase.loadJSONData();
+
+            Assert.AreEqual(currentJSONData.Orders.First().Date, newJSONData.Orders.First().Date);
         }
     }
 }
