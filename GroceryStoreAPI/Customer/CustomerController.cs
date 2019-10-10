@@ -32,5 +32,13 @@ namespace GroceryStoreAPI.Customer
 
             return Ok(customer);
         }
+
+        [HttpPost]
+        public ActionResult<Customer> Save([FromBody] Customer customer)
+        {
+            Customer savedCustomer = this.customerRepository.Save(customer);
+
+            return Ok(savedCustomer);
+        }
     }
 }

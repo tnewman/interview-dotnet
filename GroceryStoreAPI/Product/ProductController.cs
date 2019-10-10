@@ -32,5 +32,13 @@ namespace GroceryStoreAPI.Product
 
             return Ok(product);
         }
+
+        [HttpPost]
+        public ActionResult<Product> Save([FromBody] Product product)
+        {
+            Product savedProduct = this.productRepository.Save(product);
+
+            return Ok(savedProduct);
+        }
     }
 }
