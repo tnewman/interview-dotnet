@@ -12,27 +12,23 @@ namespace GroceryStoreAPI.Product
     [ApiController]
     public class ProductController : ControllerBase
     {
-        private JSONDatabase jsonDatabase;
+        private ProductRepository productRepository;
 
-        public ProductController(JSONDatabase jsonDatabase)
+        public ProductController(ProductRepository productRepository)
         {
-            this.jsonDatabase = jsonDatabase;
+            this.productRepository = productRepository;
         }
 
         [HttpGet]
         public IEnumerable<Product> List()
         {
-            return this.jsonDatabase.loadJSONData().Products;
+            return this.productRepository.List();
         }
 
         [HttpGet("{id}")]
         public ActionResult<Product> Get(int id)
         {
-            Product product = this.jsonDatabase
-                .loadJSONData()
-                .Products
-                .Where(p => p.Id == id)
-                .FirstOrDefault();
+            Product product = this.productRepository.Get(id);
 
             if (product == null)
             {

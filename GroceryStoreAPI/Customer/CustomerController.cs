@@ -12,27 +12,23 @@ namespace GroceryStoreAPI.Customer
     [ApiController]
     public class CustomerController : ControllerBase
     {
-        JSONDatabase jsonDatabase;
+        CustomerRepository customerRepository;
 
-        public CustomerController(JSON.JSONDatabase jsonDatabase)
+        public CustomerController(CustomerRepository customerRepository)
         {
-            this.jsonDatabase = jsonDatabase;
+            this.customerRepository = customerRepository;
         }
 
         [HttpGet]
         public ActionResult<IEnumerable<Customer>> List()
         {
-            return Ok(this.jsonDatabase.loadJSONData().Customers);
+            return Ok(this.customerRepository.List());
         }
 
         [HttpGet("{id}")]
         public ActionResult<Customer> Get(int id)
         {
-            Customer customer = this.jsonDatabase
-                .loadJSONData()
-                .Customers
-                .Where(c => c.Id == id)
-                .FirstOrDefault();
+            Customer customer = this.customerRepository.Get(id);
 
             if (customer == null)
             {

@@ -12,27 +12,23 @@ namespace GroceryStoreAPI.Order
     [ApiController]
     public class OrderController : ControllerBase
     {
-        JSONDatabase jsonDatabase;
+        OrderRepository orderRepository;
 
-        public OrderController(JSON.JSONDatabase jsonDatabase)
+        public OrderController(OrderRepository orderRepository)
         {
-            this.jsonDatabase = jsonDatabase;
+            this.orderRepository = orderRepository;
         }
 
         [HttpGet]
         public ActionResult<IEnumerable<Order>> List()
         {
-            return Ok(this.jsonDatabase.loadJSONData().Orders);
+            return Ok(this.orderRepository.List());
         }
 
         [HttpGet("{id}")]
         public ActionResult<Order> Get(int id)
         {
-            Order order = this.jsonDatabase
-                .loadJSONData()
-                .Orders
-                .Where(o => o.Id == id)
-                .FirstOrDefault();
+            Order order = this.orderRepository.Get(id);
 
             if (order == null)
             {
@@ -45,10 +41,7 @@ namespace GroceryStoreAPI.Order
         [HttpGet("customer/{customerId}")]
         public ActionResult<IEnumerable<Order>> GetByCustomer(int customerId)
         {
-            IEnumerable<Order> orders = this.jsonDatabase
-                .loadJSONData()
-                .Orders
-                .Where(o => o.CustomerId == customerId);
+            IEnumerable<Order> orders = this.orderRepository.GetByCustomer(customerId);
 
             return Ok(orders);
         }
@@ -56,10 +49,7 @@ namespace GroceryStoreAPI.Order
         [HttpGet("date/{date}")]
         public ActionResult<IEnumerable<Order>> GetByDate(DateTime date)
         {
-            IEnumerable<Order> orders = this.jsonDatabase
-                .loadJSONData()
-                .Orders
-                .Where(o => o.Date == date);
+            IEnumerable<Order> orders = this.orderRepository.GetByDate(date);
 
             return Ok(orders);
         }
