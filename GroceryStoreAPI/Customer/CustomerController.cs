@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
-namespace GroceryStoreAPI.Customer
+namespace GroceryStoreAPI.CustomerTest
 {
     [Route("api/customer")]
     [ApiController]
@@ -15,9 +15,9 @@ namespace GroceryStoreAPI.Customer
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<Customer>> List()
+        public IEnumerable<Customer> List()
         {
-            return Ok(this.customerRepository.List());
+            return this.customerRepository.List();
         }
 
         [HttpGet("{id}")]
@@ -30,7 +30,7 @@ namespace GroceryStoreAPI.Customer
                 return NotFound();
             }
 
-            return Ok(customer);
+            return customer;
         }
 
         [HttpPost]
@@ -38,7 +38,7 @@ namespace GroceryStoreAPI.Customer
         {
             Customer savedCustomer = this.customerRepository.Save(customer);
 
-            return Ok(savedCustomer);
+            return savedCustomer;
         }
     }
 }

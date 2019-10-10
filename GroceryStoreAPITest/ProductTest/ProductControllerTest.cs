@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace GroceryStoreAPITest.Product
+namespace GroceryStoreAPITest.ProductTest
 {
     [TestClass]
     class ProductControllerTest

@@ -1,7 +1,7 @@
-﻿using GroceryStoreAPI.Customer;
+﻿using GroceryStoreAPI.CustomerTest;
 using GroceryStoreAPI.JSON;
-using GroceryStoreAPI.Order;
-using GroceryStoreAPI.Product;
+using GroceryStoreAPI.OrderTest;
+using GroceryStoreAPI.ProductTest;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;

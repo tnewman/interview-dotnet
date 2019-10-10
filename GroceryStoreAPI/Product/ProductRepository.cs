@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace GroceryStoreAPI.Product
+namespace GroceryStoreAPI.ProductTest
 {
     public interface IProductRepository
     {

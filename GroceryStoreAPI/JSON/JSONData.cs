@@ -7,15 +7,15 @@ namespace GroceryStoreAPI.JSON
     {
         public JSONData()
         {
-            this.Customers = new List<Customer.Customer>();
-            this.Orders = new List<Order.Order>();
-            this.Products = new List<Product.Product>();
+            this.Customers = new List<CustomerTest.Customer>();
+            this.Orders = new List<OrderTest.Order>();
+            this.Products = new List<ProductTest.Product>();
         }
 
-        public IEnumerable<Customer.Customer> Customers { get; set; }
+        public IEnumerable<CustomerTest.Customer> Customers { get; set; }
 
-        public IEnumerable<Order.Order> Orders { get; set; }
+        public IEnumerable<OrderTest.Order> Orders { get; set; }
 
-        public IEnumerable<Product.Product> Products { get; set; }
+        public IEnumerable<ProductTest.Product> Products { get; set; }
     }
 }

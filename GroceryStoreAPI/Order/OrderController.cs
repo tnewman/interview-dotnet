@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace GroceryStoreAPI.Order
+namespace GroceryStoreAPI.OrderTest
 {
     [Route("api/order")]
     [ApiController]
@@ -16,9 +16,9 @@ namespace GroceryStoreAPI.Order
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<Order>> List()
+        public IEnumerable<Order> List()
         {
-            return Ok(this.orderRepository.List());
+            return this.orderRepository.List();
         }
 
         [HttpGet("{id}")]
@@ -31,23 +31,23 @@ namespace GroceryStoreAPI.Order
                 return NotFound();
             }
 
-            return Ok(order);
+            return order;
         }
 
         [HttpGet("customer/{customerId}")]
-        public ActionResult<IEnumerable<Order>> GetByCustomer(int customerId)
+        public IEnumerable<Order> GetByCustomer(int customerId)
         {
             IEnumerable<Order> orders = this.orderRepository.GetByCustomer(customerId);
 
-            return Ok(orders);
+            return orders;
         }
 
         [HttpGet("date/{date}")]
-        public ActionResult<IEnumerable<Order>> GetByDate(DateTime date)
+        public IEnumerable<Order> GetByDate(DateTime date)
         {
             IEnumerable<Order> orders = this.orderRepository.GetByDate(date);
 
-            return Ok(orders);
+            return orders;
         }
     }
 }

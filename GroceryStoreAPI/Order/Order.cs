@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace GroceryStoreAPI.Order
+namespace GroceryStoreAPI.OrderTest
 {
     public class Order
     {

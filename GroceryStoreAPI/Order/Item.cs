@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
 
-namespace GroceryStoreAPI.Order
+namespace GroceryStoreAPI.OrderTest
 {
     public class Item
     {
