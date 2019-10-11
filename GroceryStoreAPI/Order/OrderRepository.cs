@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace GroceryStoreAPI.OrderTest
+namespace GroceryStoreAPI.Order
 {
     public interface IOrderRepository
     {

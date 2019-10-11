@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace GroceryStoreAPI.OrderTest
+namespace GroceryStoreAPI.Order
 {
     [Route("api/order")]
     [ApiController]

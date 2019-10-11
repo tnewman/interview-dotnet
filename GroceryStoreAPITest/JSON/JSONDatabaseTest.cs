@@ -1,7 +1,7 @@
-using GroceryStoreAPI.CustomerTest;
+using GroceryStoreAPI.Customer;
 using GroceryStoreAPI.JSON;
-using GroceryStoreAPI.OrderTest;
-using GroceryStoreAPI.ProductTest;
+using GroceryStoreAPI.Order;
+using GroceryStoreAPI.Product;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;

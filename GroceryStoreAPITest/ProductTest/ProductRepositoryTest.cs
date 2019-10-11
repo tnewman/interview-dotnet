@@ -1,5 +1,5 @@
 ﻿using GroceryStoreAPI.JSON;
-using GroceryStoreAPI.ProductTest;
+using GroceryStoreAPI.Product;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System;

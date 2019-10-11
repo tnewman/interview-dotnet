@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
-namespace GroceryStoreAPI.CustomerTest
+namespace GroceryStoreAPI.Customer
 {
     [Route("api/customer")]
     [ApiController]

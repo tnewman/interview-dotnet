@@ -1,4 +1,4 @@
-﻿using GroceryStoreAPI.CustomerTest;
+﻿using GroceryStoreAPI.Customer;
 using GroceryStoreAPI.JSON;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using GroceryStoreAPI.CustomerTest;
+using GroceryStoreAPI.Customer;
 using GroceryStoreAPI.JSON;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -36,6 +36,18 @@ namespace GroceryStoreAPITest.CustomerTest
 
         [TestMethod]
         public void TestGetWithMissingId()
+        {
+
+        }
+
+        [TestMethod]
+        public void TestSaveInsert()
+        {
+
+        }
+
+        [TestMethod]
+        public void TestSaveOverwrite()
         {
 
         }
