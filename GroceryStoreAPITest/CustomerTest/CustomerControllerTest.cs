@@ -1,10 +1,9 @@
 ﻿using GroceryStoreAPI.Customer;
-using GroceryStoreAPI.JSON;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Collections.Generic;
-using Moq;
-using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace GroceryStoreAPITest.CustomerTest
 {
