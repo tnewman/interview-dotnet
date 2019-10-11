@@ -39,10 +39,10 @@ namespace GroceryStoreAPI.Customer
         public Customer Save(Customer customer)
         {
             JSONData jsonData = this.jsonDatabase.loadJSONData();
-            jsonData.Customers = jsonData.Customers.Where(c => c.Id != customer.Id);
+            List<Customer> customers = jsonData.Customers.Where(c => c.Id != customer.Id).ToList();
+            customers.Add(customer);
 
-            // Upsert the Customer
-            jsonData.Customers.Append(customer);
+            jsonData.Customers = customers;
 
             this.jsonDatabase.saveJSONData(jsonData);
 

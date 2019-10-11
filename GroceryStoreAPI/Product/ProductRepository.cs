@@ -39,9 +39,10 @@ namespace GroceryStoreAPI.Product
         public Product Save(Product product)
         {
             JSONData jsonData = this.jsonDatabase.loadJSONData();
-            jsonData.Products = jsonData.Products.Where(p => p.Id != product.Id);
+            List<Product> products = jsonData.Products.Where(p => p.Id != product.Id).ToList();
+            products.Add(product);
 
-            jsonData.Products.Append(product);
+            jsonData.Products = products;
 
             this.jsonDatabase.saveJSONData(jsonData);
 
