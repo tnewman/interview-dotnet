@@ -11,7 +11,7 @@ namespace GroceryStoreAPITest.CustomerTest
     [TestClass]
     public class CustomerControllerTest
     {
-        private CustomerController customerController;
+        private ICustomerController customerController;
 
         private Mock<ICustomerRepository> customerRepository;
 

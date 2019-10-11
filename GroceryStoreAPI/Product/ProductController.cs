@@ -3,9 +3,18 @@ using System.Collections.Generic;
 
 namespace GroceryStoreAPI.Product
 {
+    public interface IProductController
+    {
+        IEnumerable<Product> List();
+
+        ActionResult<Product> Get(int id);
+
+        ActionResult<Product> Save([FromBody] Product product);
+    }
+
     [Route("api/product")]
     [ApiController]
-    public class ProductController : ControllerBase
+    public class ProductController : ControllerBase, IProductController
     {
         private IProductRepository productRepository;
 

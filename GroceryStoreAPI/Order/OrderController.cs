@@ -4,9 +4,20 @@ using System.Collections.Generic;
 
 namespace GroceryStoreAPI.Order
 {
+    public interface IOrderController
+    {
+        IEnumerable<Order> List();
+
+        ActionResult<Order> Get(int id);
+
+        IEnumerable<Order> GetByCustomer(int customerId);
+
+        IEnumerable<Order> GetByDate(DateTime date);
+    }
+
     [Route("api/order")]
     [ApiController]
-    public class OrderController : ControllerBase
+    public class OrderController : ControllerBase, IOrderController
     {
         IOrderRepository orderRepository;
 

@@ -3,9 +3,18 @@ using System.Collections.Generic;
 
 namespace GroceryStoreAPI.Customer
 {
+    public interface ICustomerController
+    {
+        IEnumerable<Customer> List();
+
+        ActionResult<Customer> Get(int id);
+
+        ActionResult<Customer> Save([FromBody] Customer customer);
+    }
+
     [Route("api/customer")]
     [ApiController]
-    public class CustomerController : ControllerBase
+    public class CustomerController : ControllerBase, ICustomerController
     {
         ICustomerRepository customerRepository;
 
